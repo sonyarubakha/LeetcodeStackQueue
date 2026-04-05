@@ -1,3 +1,4 @@
+'''Maximum Frequency Stack task'''
 from collections import defaultdict
 class Node:
     '''
@@ -47,13 +48,22 @@ class Stack:
         return val
 
 class FreqStack:
+    '''
+    FreqStack class
+    '''
 
     def __init__(self):
+        '''
+        Initializes freqstack using defaultdict.
+        '''
         self.frequencies = defaultdict(int)
         self.stacks = defaultdict(Stack)
         self.max_frequency = 0
 
     def push(self, val: int) -> None:
+        '''
+        pushes an integer val onto the top of the stack
+        '''
         el = self.frequencies[val] + 1
         self.frequencies[val] = el
         if el > self.max_frequency:
@@ -61,6 +71,9 @@ class FreqStack:
         self.stacks[el].push(val)
 
     def pop(self) -> int:
+        '''
+        removes and returns the most frequent element in the stack
+        '''
         val = self.stacks[self.max_frequency].pop()
         self.frequencies[val] -= 1
         if self.stacks[self.max_frequency].is_empty():
