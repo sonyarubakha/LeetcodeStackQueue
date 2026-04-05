@@ -60,21 +60,6 @@ class Stack:
         '''
         return self.size
 
-    def __str__(self):
-        '''
-        String info about the stack
-        '''
-        if self.is_empty():
-            return 'Stack is empty.'
-        res = ''
-        now = self.head
-        while now:
-            if res == '':
-                res = str(now.val)
-            else:
-                res = str(now.val) + ' ' + res
-            now = now.next
-        return f"bottom -> {res} <- top"
 
 class MyQueue:
     '''
